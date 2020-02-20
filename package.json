@@ -1,0 +1,40 @@
+{
+  "name": "api_raw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js babel-node -- server.js --config nodemon.json",
+    "debug": "export $(cat ./dev.env | xargs) && nodemon server.js babel-node -- server.js --config nodemon.json"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "./routes/map/*"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "json5": "^2.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.5.12",
+    "nodemailer": "^6.3.0",
+    "shelljs": "^0.8.3",
+    "topojson-server": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "nodemon": "^1.19.1"
+  }
+}
