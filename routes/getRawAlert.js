@@ -70,15 +70,13 @@ router.get("/getRawAlert", async function(req, res) {
             res.status(400).send('Error serveur')
             throw err
           }
-          var dataFinal = []
           var keys = values.length !== 0 ? values : ['level']
-          keys.map(val => {
+          const dataFinal = keys.map(val => {
             var obj = {}
             const keyMax = `max_${val}`
             const keyMin = `min_${val}`
             const keyAvg = `avg_${val}`
-            var keyData = []
-            result.map(ele => {
+            const keyData = result.map(ele => {
               var info = {
                 max: ele[keyMax],
                 min: ele[keyMin],
@@ -86,11 +84,10 @@ router.get("/getRawAlert", async function(req, res) {
                 level: ele.level,
                 date: ele._id.timestamp
               }
-              keyData.push(info)
+              return info
             })
             obj["key"] = val
             obj["data"] = keyData
-            dataFinal.push(obj)
             return obj
           })
           res.status(200).send(dataFinal)
